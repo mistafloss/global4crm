@@ -14,8 +14,14 @@
                             <td>£3000</td>
                         </tr>
                         <tr>
-                            <td><h3 class="text-primary">This Week </h3></td>
-                            <td> £{{$data['agent'][0]['current_sale']}}</td>
+                            <td><h3 class="text-primary">Your Sales This Week </h3></td>
+                            <td>
+                                @if(!empty($data['agent'][0]['current_sale']))
+                                    £{{$data['agent'][0]['current_sale']}}
+                                @else
+                                    £0
+                                @endif
+                            </td>
                         </tr>
                     </table>
                 </div>

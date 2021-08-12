@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Order;
-
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -29,6 +29,7 @@ class HomeController extends Controller
         $data['weekStartDate'] = $now->startOfWeek()->format('d M Y');
         $data['weekEndDate'] = $now->endOfWeek()->format('d M Y');
         $data['agent'] = Order::select(\DB::raw('SUM(orders.total_price) As current_sale'))
+                                        ->where('orders.agent_id', Auth::user()->id)
                                         ->whereBetween('orders.created_at',
                                     [$now->startOfWeek()->format('Y-m-d'),
                                     $now->endOfWeek()->format('Y-m-d')])->get();

@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-body">
                         @include('partials.flashmessage')
-                        @if(!empty($data['orders']))
+                        @if(count($data['orders']) > 0)
                             <table class="table">
                                 <thead>
                                     <tr class="table-primary">

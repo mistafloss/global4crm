@@ -41,7 +41,6 @@ class OrderController extends Controller
             'customer' => 'required',
             'contractDuration' => 'required'
         ]);
-        //dd(Order::store($validatedData));
         if(Order::store($validatedData)){
             return redirect()->route('order.index')->with('success', 'Order was created successfully!');
         }else{
